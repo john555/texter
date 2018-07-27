@@ -1,4 +1,6 @@
 
+@import 'vars';
+
 :root {
     font-size: 62.5%;
 }
@@ -9,3 +11,114 @@ body {
     background: #f5f5f5;
     margin: 0;
 }
+
+/* Layout */
+
+#page {
+    display: flex;
+}
+
+#main-sidebar {
+    position: fixed;
+    width: 90%;
+    height: 100vh;
+    transform: translate(-110%);
+    background: $primaryColor;
+    color: white;
+    box-shadow: 0 0 1.5rem rgba(0, 0, 0, 0.2);
+    transition: transform 250ms linear;
+}
+
+#main-sidebar.active {
+    transform: translate(0);
+}
+
+#main-content {
+    flex: 1;
+}
+
+@media (min-width: 769px) {
+    #main-sidebar {
+        position: relative;
+        width: 30rem;
+        box-shadow: none;
+    }
+}
+
+/* Sidebar */
+.logo-container {
+    height: 9rem;
+    padding: 0 $asidePadding;
+    display: flex;
+    align-items: center;
+
+    a {
+        height: inherit;
+        display: flex;
+        align-items: center;
+
+        .logo {
+            height: 70%;
+        }
+    }
+    
+    .app-name {
+        margin-left: 2rem;
+    }
+}
+
+.sidebar-content {
+    .title-bar {
+        padding: 0 $asidePadding;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+        .add-chat {
+            background: none;
+            border: 0;
+            padding: 2rem;
+            color: white;
+            font-size: 2.2rem;
+        }
+    }
+
+    .chat-list {
+        list-style: none;
+        padding: 0 $asidePadding;
+    }
+
+    .chat {
+        display: flex;
+        align-items: center;
+
+        & + .chat {
+            margin-top: 1rem;
+        }
+
+        .chat-profile {
+            width: 4.5rem;
+            height: 4.5rem;
+            background: #f5f5f5;
+            color: #444;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: #666;
+        }
+
+        .chat-name {
+            padding: 0 2rem;
+        }
+
+        .chat-status {
+            width: 0.8rem;
+            height: 0.8rem;
+            border-radius: 50%;
+            background: $activeChatColor;
+        }
+    }
+}
+
